@@ -98,6 +98,25 @@ git remote add origin https://github.com/C19rk/In-Bang-Website-Project.git
 git branch -M main
 git push -u origin main
 
+===================(Large Files?)===================
+
+***(Error)***
+remote: Resolving deltas: 100% (7676/7676), done.
+remote: warning: See https://gh.io/lfs for more information.
+remote: warning: File react_app/node_modules/.cache/default-development/6.pack is 60.74 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: warning: File react_app/node_modules/.cache/default-development/2.pack is 60.75 MB; this is larger than GitHub's recommended maximum file size of 50.00 MB
+remote: warning: GH001: Large files detected. You may want to try Git Large File Storage - https://git-lfs.github.com.       
+To https://github.com/C19rk/In-Bang-Website-Project.git
+ * [new branch]        main -> main
+branch 'main' set up to track 'origin/main'.
+
+***(Fix)***
+git lfs install
+git lfs track "react_app/node_modules/.cache/default-development/6.pack"
+git lfs track "react_app/node_modules/.cache/default-development/2.pack"
+git add .
+git commit -m "Add large files to Git LFS tracking"
+git push -u origin main
 
 ===================(git clone "url")===================
 
