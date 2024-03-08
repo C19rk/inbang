@@ -1,0 +1,39 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2c6209a8.css",
+    "main.js": "/static/js/main.59284d0e.js",
+    "static/js/787.a4b45000.chunk.js": "/static/js/787.a4b45000.chunk.js",
+    "static/media/wp3.jpg": "/static/media/wp3.d88be08a062abea89b0d.jpg",
+    "static/media/wp4.jpg": "/static/media/wp4.239ca0eef4345e45d434.jpg",
+    "static/media/slider2.PNG": "/static/media/slider2.71f3dfe28804eb807118.PNG",
+    "static/media/wp2.jpg": "/static/media/wp2.24ed5e206f281b3e3dca.jpg",
+    "static/media/avenger.jpg": "/static/media/avenger.2e9073e096576ce0b3ad.jpg",
+    "static/media/poster 5.png": "/static/media/poster 5.a727e12a9b0037fc04a6.png",
+    "static/media/slider1.PNG": "/static/media/slider1.b7d241e391388fcd21fc.PNG",
+    "static/media/poster 1.png": "/static/media/poster 1.920e049ce229e3d59986.png",
+    "static/media/bg.jpg": "/static/media/bg.50dc40427b9547b0dbfa.jpg",
+    "static/media/poster 6.png": "/static/media/poster 6.c4ce848297c6794e0842.png",
+    "static/media/poster 7.png": "/static/media/poster 7.24c7d63e5831663d6d0d.png",
+    "static/media/poster 9.png": "/static/media/poster 9.da2dc52efd5cc033bff0.png",
+    "static/media/poster 11.png": "/static/media/poster 11.83ae5c0bf0d102ebb617.png",
+    "static/media/poster 2.png": "/static/media/poster 2.4536d9c86dde9d619045.png",
+    "static/media/poster 4.png": "/static/media/poster 4.e1e5fd310704660c1989.png",
+    "static/media/poster 12.png": "/static/media/poster 12.46a325f5316a7bec0368.png",
+    "static/media/zohan.jpg": "/static/media/zohan.5fff4e8c8cad3c339a9f.jpg",
+    "static/media/poster 8.png": "/static/media/poster 8.efab909951ba095f5c48.png",
+    "static/media/poster 3.png": "/static/media/poster 3.35eeb488b2d8203587c5.png",
+    "static/media/wp.jpg": "/static/media/wp.c12933328a5e0976697a.jpg",
+    "static/media/poster 10.png": "/static/media/poster 10.b249777118c2ccd0ac8d.png",
+    "static/media/slider3.PNG": "/static/media/slider3.0289be4b1242a4503783.PNG",
+    "static/media/dazzling.jpg": "/static/media/dazzling.ed9e684b656fa8565eb0.jpg",
+    "static/media/7sundays.jpg": "/static/media/7sundays.5c564c1d50ecae44a3cd.jpg",
+    "index.html": "/index.html",
+    "main.2c6209a8.css.map": "/static/css/main.2c6209a8.css.map",
+    "main.59284d0e.js.map": "/static/js/main.59284d0e.js.map",
+    "787.a4b45000.chunk.js.map": "/static/js/787.a4b45000.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c6209a8.css",
+    "static/js/main.59284d0e.js"
+  ]
+}
