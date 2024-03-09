@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { registration } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
-import pic from "../images/wp.jpg";
+import pic from "../images/registration.jpg";
 
 export const Registration = () => {
   const [first_name, setFirstName] = useState("");
@@ -65,44 +65,18 @@ export const Registration = () => {
           left: 0,
           width: "100%",
           height: "100%",
-          opacity: "24%",
           backgroundImage: `url(${pic})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          zIndex: -1,
         }}
       />
-      <h1
-        style={{
-          color: "#004cff",
-          fontSize: "150px",
-          position: "absolute",
-          right: "124px",
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        인뱅
-      </h1>
-      <h2
-        style={{
-          color: "#004cff",
-          position: "absolute",
-          fontSize: "50px",
-          top: "110px",
-          right: "24px",
-          transform: "rotate(-24deg)",
-        }}
-      >
-        In-Bang
-      </h2>
-
       <div
         style={{
-          margin: "auto",
-          top: "80px",
-          position: "relative",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           width: "300px",
           border: "2px solid rgba(18, 0, 184, 1)",
           backgroundColor: "rgba(18, 0, 184, 1)",

@@ -1,78 +1,93 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userActions";
 import pic from "../images/dazzling.jpg";
 import pic2 from "../images/wp3.jpg";
 import "../styles.css";
 
 function Dashboard() {
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
+
+  const [anchorElNav, setAnchorElNav] = React.useState(null);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate(); // Import useNavigate
+
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate("/"); // Redirect to the index path upon logout
+  };
+
+  const handleOpenNavMenu = (event) => {
+    setAnchorElNav(event.currentTarget);
+  };
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+
+  const handleCloseNavMenu = () => {
+    setAnchorElNav(null);
+  };
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null);
+  };
+
+  const handleChangePassword = () => {
+    handleCloseUserMenu(); // Close the user menu
+    navigate("/change-password"); // Navigate to the change password page
+  };
+
   return (
     <div
       style={{
         position: "relative",
-
         overflow: "hidden",
       }}
     >
       <div style={{ margin: "24px", overflowY: "auto", height: "100vh" }}>
-        <div
-          style={{
-            position: "relative",
-          }}
-        >
-          <div className="carousel">
-            <div className="carousel-images"></div>
-            <img src={require("../images/slider1.PNG")} alt="Carousel Image" />
-            <img src={require("../images/slider2.PNG")} alt="Carousel Image" />
-            <img src={require("../images/slider3.PNG")} alt="Carousel Image" />
-          </div>
-          <div className="video-cards">
-            <img src={require("../images/poster 1.png")} alt="Video Card 1" />
-            <img src={require("../images/poster 2.png")} alt="Video Card 1" />
-            <img src={require("../images/poster 3.png")} alt="Card Slider 2" />
-            <img src={require("../images/poster 11.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 12.png")} alt="Card Slider 2" />
-            <img src={require("../images/poster 8.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 3.png")} alt="Video Card 2" />
-            {/* Add more video cards as needed */}
-          </div>
+        <div style={{ position: "relative" }}>
+          <div className="carousel">{/* Carousel images */}</div>
+          <div className="video-cards">{/* Video cards */}</div>
+          <div className="card-sliders">{/* Card sliders */}</div>
+          <div className="code-structure">{/* Code structure */}</div>
 
-          <div className="card-sliders">
-            <img src={require("../images/poster 4.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 7.png")} alt="Styling" />
-            <img src={require("../images/poster 11.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 5.png")} alt="Card Slider 2" />
-            <img src={require("../images/poster 6.png")} alt="Code Structure" />
-            <img src={require("../images/poster 9.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 8.png")} alt="Card Slider 1" />
-            {/* Add more card sliders as needed */}
+          <div className="content">
+            {/* Add your content here */}
+            <Link to="/login">
+              <button
+                style={{
+                  cursor: "pointer",
+                  border: "2px solid rgba(18, 0, 184, 1)",
+                  backgroundColor: "rgba(18, 0, 184, 1)",
+                  borderRadius: "5px",
+                  color: "#ffffff",
+                  padding: "10px",
+                  fontSize: "18px",
+                }}
+              >
+                Login
+              </button>
+            </Link>
           </div>
-
-          <div className="code-structure">
-            <img src={require("../images/poster 6.png")} alt="Code Structure" />
-            <img src={require("../images/poster 9.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 10.png")} alt="Card Slider 2" />
-            <img src={require("../images/poster 7.png")} alt="Styling" />
-            <img src={require("../images/poster 11.png")} alt="Card Slider 1" />
-            <img src={require("../images/poster 12.png")} alt="Card Slider 2" />
-            <img src={require("../images/slider2.PNG")} alt="Carousel Image" />
-          </div>
-
-          <div className="content">{/* Add your content here */}</div>
-          <Link to="/login">
-            <button
-              style={{
-                cursor: "pointer",
-                border: "2px solid rgba(18, 0, 184, 1)",
-                backgroundColor: "rgba(18, 0, 184, 1)",
-                borderRadius: "5px",
-                color: "#ffffff",
-                padding: "10px",
-                fontSize: "18px",
-              }}
-            >
-              Login
-            </button>
-          </Link>
+          <button
+            onClick={logoutHandler}
+            style={{
+              cursor: "pointer",
+              border: "2px solid rgba(18, 0, 184, 1)",
+              backgroundColor: "rgba(18, 0, 184, 1)",
+              borderRadius: "5px",
+              color: "#ffffff",
+              padding: "10px",
+              fontSize: "18px",
+              marginTop: "20px",
+            }}
+          >
+            Logout
+          </button>
         </div>
         <div style={{ position: "relative" }}>
           <h1

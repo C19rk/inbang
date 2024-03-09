@@ -1,103 +1,71 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux"; // Importing useDispatch and useSelector
-import { login } from "../actions/userActions"; // Importing the login action
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../actions/userActions";
 import "../styles.css";
-import pic from "../images/wp2.jpg";
-import axios from 'axios';
-import { useHistory } from 'react-router-dom';
+import pic from "../images/login.jpg";
+import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const submit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('/api/login/', {
+      const response = await axios.post("/api/login/", {
         username,
-        password
+        password,
       });
       console.log(response.data.message); // Handle success
       // Redirect to Dashboard upon successful login
-      window.location.href = '/dashboard';
+      window.location.href = "/dashboard";
     } catch (error) {
-      setError('Invalid username or password');
+      setError("Invalid username or password");
     }
   };
-
 
   return (
     <div
       style={{
-        position: "relative",
+        position: "absolute",
         height: "100vh",
         width: "100vw",
-        overflow: "hidden",
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <div
         style={{
-          content: "",
           position: "absolute",
-          top: 0,
-          left: 0,
-          width: "100%",
-          height: "100%",
-          opacity: "24%",
-          backgroundImage: `url(${pic})`, // Use the imported image
+          width: "100vw",
+          height: "100vh",
+          backgroundImage: `url(${pic})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
-          zIndex: -1,
         }}
       />
-
-      <h1
-        style={{
-          color: "#004cff",
-          fontSize: "150px",
-          position: "absolute",
-          right: "124px",
-          margin: 0,
-          padding: 0,
-        }}
-      >
-        인뱅
-      </h1>
-      <h2
-        style={{
-          color: "#004cff",
-          position: "absolute",
-          fontSize: "50px",
-          top: "110px",
-          right: "24px",
-          transform: "rotate(-24deg)",
-        }}
-      >
-        In-Bang
-      </h2>
-
       <div
         style={{
-          margin: "auto",
-          top: "150px",
-          position: "relative",
           width: "300px",
           border: "2px solid rgba(18, 0, 184, 1)",
           backgroundColor: "rgba(18, 0, 184, 1)",
           borderRadius: "24px",
           color: "#ffffff",
           padding: "20px",
+          position: "relative", // Added position relative
         }}
       >
         <Link
           to="/"
           style={{
             position: "absolute",
-            right: "10px",
-            top: "10px",
+            top: "10px", // Adjusted top position
+            right: "10px", // Adjusted right position
             textDecoration: "none",
           }}
         >
@@ -107,7 +75,6 @@ const Login = () => {
               border: "2px solid rgba(252, 32, 3, 1)",
               backgroundColor: "rgba(252, 32, 3, 1)",
               borderRadius: "24px",
-              color: "#ffffff",
               color: "#000000",
               padding: "5px",
             }}
