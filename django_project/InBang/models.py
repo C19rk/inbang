@@ -37,3 +37,24 @@ class AppUser(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.username
+
+    def edit_user_info(self, **kwargs):
+        for field, value in kwargs.items():
+            setattr(self, field, value)
+        self.save()
+    
+    @staticmethod
+    def save_user_info(user_id, **kwargs):
+        user = AppUser.objects.get(user_id=user_id)
+        for field, value in kwargs.items():
+            setattr(user, field, value)
+        user.save()
+
+class PaymentTransaction(models.Model):
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    currency = models.CharField(max_length=3)
+    status = models.CharField(max_length=20)
+    # Add more fields as needed
+
+    class Meta:
+        app_label = 'InBang'

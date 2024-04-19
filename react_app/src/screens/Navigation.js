@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Nav, Navbar } from "react-bootstrap";
+import "../screens/mediaqueries.css";
 
 export function Navigation() {
   const [isAuth, setIsAuth] = useState(false);
@@ -11,7 +12,7 @@ export function Navigation() {
   }, []);
 
   return (
-    <div>
+    <div className="container">
       <Navbar bg="dark" variant="dark">
         <Navbar.Brand href="/">JWT Authentication</Navbar.Brand>
         <Nav className="me-auto">

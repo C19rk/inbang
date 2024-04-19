@@ -1,12 +1,21 @@
 import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userUpdateProfileReducer,
+  paypalInitiatePaymentReducer,
+  paypalConfirmPaymentReducer,
+} from "./reducers/userReducers";
 
 const reducer = combineReducers({
   // Add your reducers here
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userUpdateProfile: userUpdateProfileReducer,
+  paypalInitiatePayment: paypalInitiatePaymentReducer,
+  paypalConfirmPayment: paypalConfirmPaymentReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

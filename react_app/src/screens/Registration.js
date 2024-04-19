@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { registration } from "../actions/userActions";
 import { useDispatch, useSelector } from "react-redux";
 import pic from "../images/registration.jpg";
+import "./mediaqueries.css";
 
 export const Registration = () => {
   const [first_name, setFirstName] = useState("");
@@ -41,7 +42,7 @@ export const Registration = () => {
         console.log("may error", error.detail);
       }
       if (password === confirmPassword && !error) {
-        navigate("/login");
+        navigate("/subscription");
       }
     } catch (error) {
       throw new Error(error.detail);
@@ -50,6 +51,7 @@ export const Registration = () => {
 
   return (
     <div
+      className="container"
       style={{
         position: "relative",
         height: "100vh",
@@ -244,6 +246,7 @@ export const Registration = () => {
                 color: "#ffffff",
                 padding: "10px",
                 fontSize: "18px",
+                fontWeight: "bolder",
               }}
             >
               Register

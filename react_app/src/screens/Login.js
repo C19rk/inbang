@@ -1,34 +1,46 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import {
+  Link,
+  useLocation,
+  useSearchParams,
+  useNavigate,
+  redirect,
+} from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../actions/userActions";
 import "../styles.css";
 import pic from "../images/login.jpg";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import "./mediaqueries.css";
 
-const Login = () => {
+function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState("");
+  const location = useLocation();
+  const redirect = location.search
+    ? location.search.split("=")[1]
+    : "/dashboard";
+  const userLogin = useSelector((state) => state.userLogin);
+  const { error, loading, userInfo } = userLogin;
 
-  const submit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post("/api/login/", {
-        username,
-        password,
-      });
-      console.log(response.data.message); // Handle success
-      // Redirect to Dashboard upon successful login
-      window.location.href = "/dashboard";
-    } catch (error) {
-      setError("Invalid username or password");
+  let navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate(redirect);
     }
+  }, [navigate, dispatch, redirect, userInfo]);
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    dispatch(login(username, password));
   };
 
   return (
     <div
+      className="container"
       style={{
         position: "absolute",
         height: "100vh",
@@ -41,8 +53,8 @@ const Login = () => {
       <div
         style={{
           position: "absolute",
-          width: "100vw",
-          height: "100vh",
+          width: "100%",
+          height: "100%",
           backgroundImage: `url(${pic})`,
           backgroundPosition: "center",
           backgroundSize: "cover",
@@ -103,10 +115,10 @@ const Login = () => {
               marginBottom: "10px",
             }}
           >
-            {error}
+            Incorrect username or password!
           </p>
         )}
-        <form onSubmit={submit}>
+        <form onSubmit={submitHandler}>
           <div
             style={{
               display: "flex",
@@ -157,6 +169,7 @@ const Login = () => {
                 color: "#ffffff",
                 padding: "10px",
                 fontSize: "18px",
+                fontWeight: "bolder",
               }}
             >
               Login
@@ -181,6 +194,7 @@ const Login = () => {
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
+            fontWeight: "bolder",
           }}
         >
           Register
@@ -188,6 +202,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Login;

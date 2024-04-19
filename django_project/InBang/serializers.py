@@ -2,6 +2,8 @@ from rest_framework import serializers
 from django.contrib.auth.models import User
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
+from django.contrib.auth.password_validation import validate_password
+from .models import AppUser, PaymentTransaction
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
     def validate(self, attrs):
@@ -62,6 +64,39 @@ class ResetPasswordSerializer(serializers.Serializer):
             raise serializers.ValidationError("User with this email does not exist.")
         return value
     
-class OTPVerificationSerializer(serializers.Serializer):
-    email = serializers.EmailField(required=True)
-    otp = serializers.CharField(required=True)
+class UserSettingsSerializer(serializers.Serializer):
+    # required=False means doesn't require update every edit
+    username = serializers.CharField(required=False)
+    email = serializers.EmailField(required=False)
+    first_name = serializers.CharField(required=False)
+    last_name = serializers.CharField(required=False)
+    old_password = serializers.CharField(required=False)
+    new_password = serializers.CharField(required=False)
+    confirm_password = serializers.CharField(required=False)
+
+    class Meta:
+        model = User
+        fields = ('username', 'email', 'first_name', 'last_name', 'old_password', 'new_password', 'confirm_password')
+        extra_kwargs = {'username': {'required': False}, 'email': {'required': False}, 'first_name': {'required': False}, 'last_name': {'required': False}}
+    
+    def validate_old_password(self, value):
+        user = self.context['request'].user
+        if not user.check_password(value):
+            raise serializers.ValidationError("Old password is incorrect!")
+        return value
+
+    def validate(self, data):
+        if 'new_password' in data and 'confirm_password' in data:
+            if data['new_password'] != data['confirm_password']:
+                raise serializers.ValidationError({"confirm_password": "Passwords do not match."})
+        return data
+    
+class AppUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = AppUser
+        fields = ['user_id', 'email', 'username', 'is_active', 'is_staff']
+
+class PaymentTransactionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PaymentTransaction
+        fields = ['amount', 'currency', 'status']
