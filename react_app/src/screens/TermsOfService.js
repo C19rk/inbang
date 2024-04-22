@@ -1,5 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 import Footer from "../components/Footer.js";
 import "./InvisiScroll.css";
 import pic from "../images/homepage.jpg";
@@ -16,9 +17,46 @@ function TermsOfService() {
     navigate(-1); // Go back one step in the browser history
   };
 
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+  const [showMessage, setShowMessage] = useState(false);
+  useEffect(() => {
+    // Show message for a short duration before redirecting
+    if (userInfo) {
+      setShowMessage(true); // Show the message
+    }
+  }, [userInfo, navigate]);
+
+  const linkStyle = {
+    position: "fixed",
+    top: "2vh",
+    right: "15vh",
+    cursor: "pointer",
+    fontSize: "4.4vh",
+    fontWeight: "bolder",
+    backgroundColor: "#ffe600",
+    border: "0.4vh solid #fff380",
+    borderRadius: "1vh",
+    color: "#000000",
+  };
+
   return (
     <div className="card-container">
       <Footer />
+      {userInfo && (
+        <React.Fragment>
+          <button style={linkStyle} onClick={() => navigate("/dashboard")}>
+            Return to Dashboard
+          </button>
+        </React.Fragment>
+      )}
+      {!userInfo && (
+        <React.Fragment>
+          <button style={linkStyle} onClick={() => navigate("/")}>
+            Return to Home
+          </button>
+        </React.Fragment>
+      )}
       <div
         style={{
           display: "flex",
