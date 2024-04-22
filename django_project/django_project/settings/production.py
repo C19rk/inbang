@@ -13,9 +13,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent.parent
 SECRET_KEY = '1%^*w^6l8y9b6p!$tts*nr#90(*2(q$r_#etz8-7++yo6)8fq('
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'herokuapp.com',
+    'inbang-e0eed500404f.herokuapp.com/',
+    'git.heroku.com/inbang.git'
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -128,6 +132,11 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
+DATABASES['default']['CONN_MAX_AGE'] = 500
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
