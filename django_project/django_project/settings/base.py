@@ -15,7 +15,7 @@ SECRET_KEY = '1%^*w^6l8y9b6p!$tts*nr#90(*2(q$r_#etz8-7++yo6)8fq('
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -31,8 +31,8 @@ INSTALLED_APPS = [
     'storages',
 ]
 
-PAYPAL_CLIENT_ID = 'ASheaXUMpPBg22qQ4dOwRR6NqzaXsqPw5RFCG6Eii2OAQH9o_Rkbu0LtxNLTlUm8XEsFGqcvrn1tUfhR'
-PAYPAL_SECRET = 'EB6V3LiHA3wPj8MWpj8WoQBkQJEfV89D1gqXYP54fAOVOxeFrPhtPgfB1b1TUQ1J2x0fuWMnA_FJnDer'
+PAYPAL_CLIENT_ID = 'AWIE8LM_jDo1bcmxdNBcfaMbYHJ86JKbQsw4oMsVJjecp4GzCSlwfPic-If34R5SDrHzeiczrOWZKMDr'
+PAYPAL_SECRET = 'EE0UxCTWkmZZ1lWjW6N9oLgUcmRkncmtrN4zG_I4OO-oa4PjfU31UjfpH3JQivIFfUUDuqO9J1axO7TY'
 
 CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [

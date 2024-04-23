@@ -13,6 +13,4 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('registration/', registerUser, name='registration'),
     path('user-settings/', userSettings, name='user-settings'),
-    path('initiate-payment/', initiate_payment, name='initiate_payment'),
-    path('handle-payment-confirmation/', handle_payment_confirmation, name='handle_payment_confirmation'),
 ]
